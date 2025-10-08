@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+	
+	</style>
+	<body>
+	<script>
+		class Node {
+			constructor(element){
+				this.element=element
+				this.next=null
+			}
+		}
+		class LinkedList {
+			constructor(){
+				this.count=0
+				this.head=null
+			}
+			push(element){
+				const node=new Node(element)
+				// head=空
+				if(this.head===null){
+					this.head=node
+				}else{
+					let current=this.head
+					while(current.next!=null){
+						current=current.next
+					}
+					current.next=node
+				}
+				this.count++
+			}
+			// 指定位置删除
+			removeAt(index){
+				if(index>=0 && index<this.count){	
+					let current=this.head
+					if(index==0){
+						this.head=this.head.next
+					}else {
+						let previous
+						for (let i = 0; i < index; i++) {
+							previous = current
+							current = current.next	
+						}
+						previous.next=current.next
+					}
+					this.count--
+					return current.element
+				}
+				return 
+			}
+  
+			getNodeAt(index){
+				if(index>=0 && index<this.count){
+					let node=this.head
+					for (let i =0;  i< index;i++) {
+						node=node.next	
+					}
+					return node
+				}
+				return
+			}
+			remove(element){
+				const current=this.head
+				while (current.element!=element) {
+					current=current.next
+				}
+			}
+		}
+		const link=new LinkedList()
+	</script>
+	</body>
+</html>
